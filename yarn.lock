@@ -198,10 +198,10 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
-jfw-js@^3.8.2-6.9:
-  version "3.8.2-6.9"
-  resolved "https://registry.yarnpkg.com/jfw-js/-/jfw-js-3.8.2-6.9.tgz#19fd55ab35623ccdfbbb9da545fbf54260debedf"
-  integrity sha512-BDdNQaHGZDjX4gJA9y4vzB6RGv/uz96Swo3EX1FEYD834A2gjyxQLec7HSA4dIGw0Z4tQJpMpIhODRcY3h/TSw==
+jfw-js@^3.9.0-1.9:
+  version "3.9.0-1.9"
+  resolved "https://registry.yarnpkg.com/jfw-js/-/jfw-js-3.9.0-1.9.tgz#a88c73fa59c73c7f61efe295d51d2f6b87ff5711"
+  integrity sha512-PyifQAb5uHTrsUOO/KCrw6GZbBrm2DGZbQoXTImkwLmKIobQig6/CMe6s8H662C4Vlq6McuhJFt/w0MMWlmp4A==
   dependencies:
     axios "^1.7.7"
     query-string "^9.1.0"

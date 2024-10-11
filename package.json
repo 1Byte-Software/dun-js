@@ -1,7 +1,7 @@
 {
-  "name": "dun-test",
+  "name": "dun-js",
   "description": "The Javascript package for DUN",
-  "version": "1.1.2",
+  "version": "1.2.3",
   "author": "1byte devteam",
   "license": "ISC",
   "bugs": {
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "jfw-js": "^3.8.2-6.9",
+    "jfw-js": "^3.9.0-1.9",
     "query-string": "^9.1.0",
     "rollup": "^4.22.0",
     "rollup-plugin-typescript2": "^0.36.0",

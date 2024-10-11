@@ -16,10 +16,7 @@ const config$ = _AppService.getConfig$();
 
 config$.subscribe((config) => {
   if (config) {
-    const baseUrl =
-      config.mode === MODE_VALUES.development
-        ? API_DOMAIN.development
-        : API_DOMAIN.production;
+    const baseUrl = API_DOMAIN[config.mode];
 
     brandUrl = config.brandUrl;
 
