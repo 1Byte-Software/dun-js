@@ -40,4 +40,4 @@ export interface IGetListKeyloggerParams
     extends IPaginationParams,
         ISortParams,
         IKeyloggerDateFilter,
-        Pick<IKeylogger, 'deviceId' | 'keyloggerName'> {}
+        Partial<Pick<IKeylogger, 'deviceId' | 'keyloggerName'>> {}

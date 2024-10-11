@@ -49,4 +49,4 @@ export interface IGetListSMSParams
     extends IPaginationParams,
         ISortParams,
         ISMSDateFilter,
-        Pick<ISMS, 'deviceId' | 'contactName' | 'direction'> {}
+        Partial<Pick<ISMS, 'deviceId' | 'contactName' | 'direction'>> {}

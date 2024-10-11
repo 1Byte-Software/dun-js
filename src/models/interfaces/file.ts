@@ -42,4 +42,4 @@ export interface IFileDateFilter {
     fileDateTo?: DateType;
 }
 
-export interface IGetListFileParams extends IPaginationParams, ISortParams, IFileDateFilter, Pick<IFile, 'deviceId'> {}
+export interface IGetListFileParams extends IPaginationParams, ISortParams, IFileDateFilter, Partial<Pick<IFile, 'deviceId'>> {}

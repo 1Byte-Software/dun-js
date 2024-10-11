@@ -1,15 +1,14 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, ICall, IdType, IGetListCallParams } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, ICall, IdType, IGetListCallParams } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'calls';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
-export const getListCallAPI = async (
-    params?: IGetListCallParams
-): Promise<IListResponse<ICall>> => {
+export const getListCallAPI = async (params?: IGetListCallParams): Promise<IListResponse<ICall>> => {
     const url = `${REST}`;
 
     const response = await axiosInstanceDun.get(url, {
@@ -25,9 +24,11 @@ export const getListCallAPI = async (
 };
 
 export const resetCallAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 

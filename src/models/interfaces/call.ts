@@ -53,4 +53,4 @@ export interface IGetListCallParams
     extends IPaginationParams,
         ISortParams,
         ICallDateFilter,
-        Pick<ICall, 'deviceId' | 'contactName' | 'direction' | 'phoneNumber'> {}
+        Partial<Pick<ICall, 'deviceId' | 'contactName' | 'direction' | 'phoneNumber'>> {}

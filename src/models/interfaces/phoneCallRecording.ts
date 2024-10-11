@@ -61,4 +61,4 @@ export interface IGetListPhoneCallRecordingParams
     extends IPaginationParams,
         ISortParams,
         IPhoneCallRecordingDateFilter,
-        Pick<IPhoneCallRecording, 'deviceId' | 'contactName' | 'direction'> {}
+        Partial<Pick<IPhoneCallRecording, 'deviceId' | 'contactName' | 'direction'>> {}

@@ -55,4 +55,4 @@ export interface IGetListPhotoParams
     extends IPaginationParams,
         ISortParams,
         IPhotoDateFilter,
-        Pick<IPhoto, 'deviceId' | 'caption'> {}
+        Partial<Pick<IPhoto, 'deviceId' | 'caption'>> {}

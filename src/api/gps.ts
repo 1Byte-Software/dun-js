@@ -1,10 +1,11 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IGetLastGPSParams, IGetListGPSParams, IGPS } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IGetLastGPSParams, IGetListGPSParams, IGPS } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'gps';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
 export const getListGPSAPI = async (params?: IGetListGPSParams): Promise<IListResponse<IGPS>> => {
@@ -23,10 +24,11 @@ export const getListGPSAPI = async (params?: IGetListGPSParams): Promise<IListRe
 };
 
 export const resetGPSAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
-
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
     const isSuccess = response.data;
 
     return isSuccess;

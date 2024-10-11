@@ -40,4 +40,4 @@ export interface IGetListURLParams
     extends IPaginationParams,
         ISortParams,
         IURLDateFilter,
-        Pick<IURL, 'deviceId' | 'browserName' | 'urlLink'> {}
+        Partial<Pick<IURL, 'deviceId' | 'browserName' | 'urlLink'>> {}

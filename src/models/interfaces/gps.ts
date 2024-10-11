@@ -60,4 +60,4 @@ export interface IGetListGPSParams
         IGPSDateFilter,
         Pick<IGPS, 'deviceId' | 'address'> {}
 
-export interface IGetLastGPSParams extends Pick<IGPS, 'deviceId'> {}
+export interface IGetLastGPSParams extends Partial<Pick<IGPS, 'deviceId'>> {}

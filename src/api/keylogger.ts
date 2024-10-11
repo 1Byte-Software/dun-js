@@ -1,15 +1,14 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IGetListKeyloggerParams, IKeylogger } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IGetListKeyloggerParams, IKeylogger } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'keyloggers';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
-export const getListKeyloggerAPI = async (
-    params?: IGetListKeyloggerParams
-): Promise<IListResponse<IKeylogger>> => {
+export const getListKeyloggerAPI = async (params?: IGetListKeyloggerParams): Promise<IListResponse<IKeylogger>> => {
     const keylogger = `${REST}`;
 
     const response = await axiosInstanceDun.get(keylogger, {
@@ -25,9 +24,11 @@ export const getListKeyloggerAPI = async (
 };
 
 export const resetKeyloggerAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 
@@ -44,9 +45,7 @@ export const deleteKeyloggerAPI = async (id: IdType): Promise<boolean> => {
     return isSuccess;
 };
 
-export const getLastSyncTimeKeyloggerAPI = async (
-    deviceId: IdType
-): Promise<DateType | null> => {
+export const getLastSyncTimeKeyloggerAPI = async (deviceId: IdType): Promise<DateType | null> => {
     const params = {
         deviceId,
     };

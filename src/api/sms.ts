@@ -1,10 +1,11 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IGetListSMSParams, ISMS } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IGetListSMSParams, ISMS } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'SMS';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
 export const getListSMSAPI = async (params?: IGetListSMSParams): Promise<IListResponse<ISMS>> => {
@@ -23,9 +24,11 @@ export const getListSMSAPI = async (params?: IGetListSMSParams): Promise<IListRe
 };
 
 export const resetSMSAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 

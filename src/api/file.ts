@@ -1,9 +1,10 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IFile, IGetListFileParams } from "@/models";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IFile, IGetListFileParams } from '../models';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'files';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
 export const getListFileAPI = async (params?: IGetListFileParams): Promise<IFile[]> => {
@@ -17,9 +18,11 @@ export const getListFileAPI = async (params?: IGetListFileParams): Promise<IFile
 };
 
 export const resetFileAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 

@@ -43,4 +43,4 @@ export interface IGetListNotificationParams
     extends IPaginationParams,
         ISortParams,
         INotificationDateFilter,
-        Pick<INotification, 'deviceId' | 'appName'> {}
+        Partial<Pick<INotification, 'deviceId' | 'appName'>> {}

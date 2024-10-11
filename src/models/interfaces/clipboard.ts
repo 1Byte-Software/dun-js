@@ -40,4 +40,4 @@ export interface IGetListClipboardParams
     extends IPaginationParams,
         ISortParams,
         IClipboardDateFilter,
-        Pick<IClipboard, 'deviceId' | 'fromApp'> {}
+        Partial<Pick<IClipboard, 'deviceId' | 'fromApp'>> {}

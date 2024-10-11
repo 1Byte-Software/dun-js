@@ -49,4 +49,4 @@ export interface IGetListContactParams
     extends IPaginationParams,
         ISortParams,
         IContactDateFilter,
-        Pick<IContact, 'deviceId' | 'phone'> {}
+        Partial<Pick<IContact, 'deviceId' | 'phone'>> {}

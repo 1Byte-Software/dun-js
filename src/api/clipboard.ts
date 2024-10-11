@@ -1,15 +1,14 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IClipboard, IdType, IGetListClipboardParams } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IClipboard, IdType, IGetListClipboardParams } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'clipboards';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
-export const getListClipboardAPI = async (
-    params?: IGetListClipboardParams
-): Promise<IListResponse<IClipboard>> => {
+export const getListClipboardAPI = async (params?: IGetListClipboardParams): Promise<IListResponse<IClipboard>> => {
     const clipboard = `${REST}`;
 
     const response = await axiosInstanceDun.get(clipboard, {
@@ -25,9 +24,11 @@ export const getListClipboardAPI = async (
 };
 
 export const resetClipboardAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 
@@ -44,9 +45,7 @@ export const deleteClipboardAPI = async (id: IdType): Promise<boolean> => {
     return isSuccess;
 };
 
-export const getLastSyncTimeClipboardAPI = async (
-    deviceId: IdType
-): Promise<DateType | null> => {
+export const getLastSyncTimeClipboardAPI = async (deviceId: IdType): Promise<DateType | null> => {
     const params = {
         deviceId,
     };

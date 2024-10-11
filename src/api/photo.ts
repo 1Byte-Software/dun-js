@@ -1,9 +1,10 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IGetListPhotoParams, IPhoto } from "@/models";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IGetListPhotoParams, IPhoto } from '../models';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'photos';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
 export const getListPhotoAPI = async (params?: IGetListPhotoParams): Promise<IPhoto[]> => {
@@ -17,9 +18,11 @@ export const getListPhotoAPI = async (params?: IGetListPhotoParams): Promise<IPh
 };
 
 export const resetPhotoAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
 
     const isSuccess = response.data;
 

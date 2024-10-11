@@ -1,5 +1,6 @@
-import { axiosInstanceDun } from '@/config/axios/axiosClient';
-import { IDeviceDataSync, IGetOrCreateDeviceDataSync } from '@/models';
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { IDeviceDataSync, IGetOrCreateDeviceDataSync } from '../models';
+
 
 const REST = 'devices/data-sync';
 

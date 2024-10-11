@@ -49,4 +49,4 @@ export interface IGetListCalendarParams
     extends IPaginationParams,
         ISortParams,
         ICalendarDateFilter,
-        Pick<ICalendar, 'deviceId' | 'location'> {}
+        Partial<Pick<ICalendar, 'deviceId' | 'location'>> {}

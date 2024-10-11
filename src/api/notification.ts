@@ -1,14 +1,15 @@
-import { axiosInstanceDun } from "@/config/axios/axiosClient";
-import { DateType, IdType, IGetListNotificationParams, INotification } from "@/models";
-import { IListResponse } from "@/models/interfaces/common";
+import { axiosInstanceDun } from '../config/axios/axiosClient';
+import { DateType, IdType, IGetListNotificationParams, INotification } from '../models';
+import { IListResponse } from '../models/interfaces/common';
+import { formatStringByObj } from '../utils/string';
 
 const REST = 'notifications';
 
-const resetPath = `${REST}/reset`;
+const resetPath = `${REST}/reset/{deviceId}`;
 const lastClientTimePath = `${REST}/last-client-time`;
 
 export const getListNotificationAPI = async (
-    params?: IGetListNotificationParams
+    params?: IGetListNotificationParams,
 ): Promise<IListResponse<INotification>> => {
     const url = `${REST}`;
 
@@ -25,10 +26,11 @@ export const getListNotificationAPI = async (
 };
 
 export const resetNotificationAPI = async (deviceId: IdType): Promise<boolean> => {
-    const response = await axiosInstanceDun.post(resetPath, {
-        deviceId,
-    });
-
+    const response = await axiosInstanceDun.post(
+        formatStringByObj(resetPath, {
+            deviceId,
+        }),
+    );
     const isSuccess = response.data;
 
     return isSuccess;
@@ -44,9 +46,7 @@ export const deleteNotificationAPI = async (id: IdType): Promise<boolean> => {
     return isSuccess;
 };
 
-export const getLastSyncTimeNotificationAPI = async (
-    deviceId: IdType
-): Promise<DateType | null> => {
+export const getLastSyncTimeNotificationAPI = async (deviceId: IdType): Promise<DateType | null> => {
     const params = {
         deviceId,
     };
