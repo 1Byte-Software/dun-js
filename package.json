@@ -1,7 +1,7 @@
 {
   "name": "dun-js",
   "description": "The Javascript package for DUN",
-  "version": "0.9.10",
+  "version": "1.2.8",
   "author": "1byte devteam",
   "license": "ISC",
   "bugs": {
