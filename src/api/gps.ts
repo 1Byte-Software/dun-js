@@ -70,7 +70,7 @@ export const getLastGPSAPI = async (params?: IGetLastGPSParams): Promise<IGPS | 
         },
     });
 
-    const result = response.data[0];
+    const result = response?.data?.items?.[0];
 
     if (!result) return null;
 
