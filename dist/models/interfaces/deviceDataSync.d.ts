@@ -24,7 +24,7 @@ export interface IDeviceDataSync extends IBase {
     /** The last time the files were synchronized */
     lastFileDate?: DateType;
     /** The last time the GPS data was synchronized */
-    lastGPSDate?: DateType;
+    lastGpsDate?: DateType;
     /** The last time the keylogger data was synchronized */
     lastKeyloggerDate?: DateType;
     /** The last time the notifications were synchronized */
@@ -34,9 +34,9 @@ export interface IDeviceDataSync extends IBase {
     /** The last time the photos were synchronized */
     lastPhotoDate?: DateType;
     /** The last time the SMS messages were synchronized */
-    lastSMSDate?: DateType;
+    lastSmsDate?: DateType;
     /** The last time the URLs were synchronized */
-    lastURLDate?: DateType;
+    lastUrlDate?: DateType;
 }
 export interface IGetOrCreateDeviceDataSync extends Pick<IDeviceDataSync, 'deviceId'> {
 }

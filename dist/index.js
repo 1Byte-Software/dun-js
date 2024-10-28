@@ -758,8 +758,9 @@ var getLastSyncTimeGPSAPI = function (deviceId) { return __awaiter(void 0, void 
 }); };
 var getLastGPSAPI = function (params) { return __awaiter(void 0, void 0, void 0, function () {
     var gps, response, result;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
                 gps = "".concat(REST$6);
                 return [4 /*yield*/, axiosInstanceDun.get(gps, {
@@ -771,8 +772,8 @@ var getLastGPSAPI = function (params) { return __awaiter(void 0, void 0, void 0,
                         },
                     })];
             case 1:
-                response = _a.sent();
-                result = response.data[0];
+                response = _c.sent();
+                result = (_b = (_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.items) === null || _b === void 0 ? void 0 : _b[0];
                 if (!result)
                     return [2 /*return*/, null];
                 return [2 /*return*/, result];
